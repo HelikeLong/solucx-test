@@ -21,7 +21,10 @@ Run migrations to build DB
   docker exec -it php php /var/www/html/artisan migrate
 ```
 
-## Api Documentation
+## API Documentation
 
 Import the `./solucx-test.yaml` at Postman, Insomnia etc, to check project's APIs.
 
+
+## DB MER
+![image](mer_solucx_test.png)
