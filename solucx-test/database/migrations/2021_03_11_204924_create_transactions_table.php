@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('client_id')->index('transactions_FK');
             $table->integer('store_id')->nullable()->index('transactions_FK_2');
             $table->integer('collaborator_id')->nullable()->index('transactions_FK_1');
-            $table->timestamp('date')->useCurrent();
+            $table->date('date');
             $table->decimal('value', 5);
             $table->softDeletes();
             $table->timestamp('created_at')->nullable()->useCurrent();

@@ -32,6 +32,14 @@ class Transaction extends Model
     protected $fillable = ['client_id', 'store_id', 'collaborator_id', 'date', 'value', 'deleted_at', 'created_at', 'updated_at'];
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
+    public static $rules = [
+        "client_id" => "required|integer|exists:clients,id,deleted_at,NULL",
+        "store_id" => "integer|exists:stores,id,deleted_at,NULL",
+        "collaborator_id" => "integer|exists:collaborators,id,deleted_at,NULL",
+        "date" => "required|date",
+        "value" => "required|numeric"
+    ];
+
     /**
      * @return BelongsTo
      */

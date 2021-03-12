@@ -2,22 +2,18 @@
 
 namespace App\Traits;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Laravel\Lumen\Http\Request;
 
 trait RestActions {
     use ApiResponser;
-
-    private $m = self::Model;
 
     /**
      * @return JsonResponse
      */
     public function all(): JsonResponse
     {
-        return $this->successResponse($this->m::all());
+        return $this->successResponse($this->_model::all());
     }
 
     /**
@@ -26,7 +22,7 @@ trait RestActions {
      */
     public function get($id): JsonResponse
     {
-        $items = $this->m::find($id);
+        $items = $this->_model::find($id);
         if(is_null($items)){
             return $this->errorResponse(Response::HTTP_NOT_FOUND);
         }
@@ -34,24 +30,24 @@ trait RestActions {
     }
 
     /**
-     * @param Request $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(): JsonResponse
     {
-        $this->validate($request,$this->m::$rules);
-        return $this->successResponse($this->m::create($request->all()), Response::HTTP_CREATED);
+        $request = app('request');
+        $this->validate($request,$this->_model::$rules);
+        return $this->successResponse($this->_model::create($request->all()), Response::HTTP_CREATED);
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return JsonResponse
      */
-    public function update(Request $request, $id): JsonResponse
+    public function update($id): JsonResponse
     {
-        $this->validate($request,$this->m::$rules);
-        $model = $this->m::find($id);
+        $request = app('request');
+        $this->validate($request,$this->_model::$rules);
+        $model = $this->_model::find($id);
         if(is_null($model)){
             return $this->errorResponse(Response::HTTP_NOT_FOUND);
         }
@@ -65,10 +61,10 @@ trait RestActions {
      */
     public function delete($id): JsonResponse
     {
-        if(is_null($this->m::find($id))){
+        if(is_null($this->_model::find($id))){
             return $this->errorResponse(Response::HTTP_NOT_FOUND);
         }
-        $this->m::delete($id);
+        $this->_model::destroy($id);
         return $this->successResponse([], Response::HTTP_NO_CONTENT);
     }
 }

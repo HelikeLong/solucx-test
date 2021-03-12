@@ -23,7 +23,7 @@ Run migrations to build DB
 
 ## API Documentation
 
-Import the `./solucx-test.yaml` at Postman, Insomnia etc, to check project's APIs.
+Import the `./solucx-test.json` at Postman, Insomnia etc, to check project's APIs.
 
 
 ## DB MER

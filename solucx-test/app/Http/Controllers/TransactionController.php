@@ -3,7 +3,7 @@
 
     use App\Traits\RestActions;
 
-    class ClientController extends Controller {
-        private $_model = "App\\Models\\Client";
+    class TransactionController extends Controller {
+        private $_model = "App\\Models\\Transaction";
         use RestActions;
     }

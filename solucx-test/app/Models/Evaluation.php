@@ -26,6 +26,12 @@ class Evaluation extends Model
     protected $fillable = ['transaction_id', 'grade', 'comments', 'deleted_at', 'created_at', 'updated_at'];
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
+    public static $rules = [
+        "transaction_id" => "required|integer|exists:transactions,id,deleted_at,NULL",
+        "grade" => "required|numeric",
+        "comments" => "string"
+    ];
+
     /**
      * @return BelongsTo
      */

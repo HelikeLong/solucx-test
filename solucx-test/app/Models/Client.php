@@ -30,8 +30,8 @@ class Client extends Model
     public static $rules = [
         "name" => "required|max:150",
         "email" => "required|email|max:100",
-        "phone" => "required|regex:/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/i|max:15",
-        "document" => "required|regex:/^$[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/i|max:15"
+        "phone" => "required|regex:/^(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})$/i|max:15",
+        "document" => "required|regex:/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}$/i|max:15"
     ];
 
     /**

@@ -24,6 +24,10 @@ class Store extends Model
     protected $fillable = ['name', 'deleted_at', 'created_at', 'updated_at'];
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
+    public static $rules = [
+        "name" => "required|max:150"
+    ];
+
     /**
      * @return HasMany
      */
