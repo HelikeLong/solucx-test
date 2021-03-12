@@ -13,7 +13,7 @@ Configure the `.env` for the application
 
 Run docker
 ```bash
-  docker-compose up --build -d
+  docker-compose up -d
 ```
 
 ## Contributing
