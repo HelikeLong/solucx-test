@@ -15,6 +15,7 @@ Run docker
 ```bash
   docker-compose up -d
 ```
+PS: Docker might take some secounds to build, if you see an error on the following command, wait a couple secounds and try again.
 
 Run migrations to build DB
 ```bash
