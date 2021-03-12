@@ -30,6 +30,7 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = ['client_id', 'store_id', 'collaborator_id', 'date', 'value', 'deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return BelongsTo

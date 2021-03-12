@@ -12,8 +12,6 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: solucx_test
-    volumes:
-      - ./mysql-data:/var/lib/mysql
 
   nginx:
     container_name: nginx

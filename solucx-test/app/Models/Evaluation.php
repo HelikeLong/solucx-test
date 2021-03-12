@@ -24,6 +24,7 @@ class Evaluation extends Model
      * @var array
      */
     protected $fillable = ['transaction_id', 'grade', 'comments', 'deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return BelongsTo

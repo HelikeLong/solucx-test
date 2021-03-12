@@ -31,7 +31,7 @@ paths:
         schema:
           $ref: "#/definitions/Client_Data"
       responses:
-        "200":
+        "201":
           description: "Success"
           schema:
             $ref: "#/definitions/Client"
@@ -50,7 +50,7 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Clients"
-        "405":
+	"405":
           description: "Invalid input"
   /clients/{id}:
     put:
@@ -78,6 +78,8 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Client"
+	"404":
+          description: "Not Found"
         "405":
           description: "Invalid input"
     delete:
@@ -95,8 +97,10 @@ paths:
         required: true
         description: "Client ID"
       responses:
-        "200":
+        "204":
           description: "Success"
+	"404":
+          description: "Not Found"
         "405":
           description: "Invalid input"
           
@@ -117,7 +121,7 @@ paths:
         schema:
           $ref: "#/definitions/Collaborator_Data"
       responses:
-        "200":
+        "201":
           description: "Success"
           schema:
             $ref: "#/definitions/Collaborator"
@@ -136,7 +140,7 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Collaborators"
-        "405":
+	"405":
           description: "Invalid input"
   /collaborators/{id}:
     put:
@@ -164,6 +168,8 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Collaborator"
+	"404":
+          description: "Not Found"
         "405":
           description: "Invalid input"
     delete:
@@ -181,9 +187,11 @@ paths:
         required: true
         description: "Collaborator ID"
       responses:
-        "200":
+        "204":
           description: "Success"
-        "405":
+        "404":
+          description: "Not Found"
+	"405":
           description: "Invalid input"
           
   /stores:
@@ -203,7 +211,7 @@ paths:
         schema:
           $ref: "#/definitions/Store_Data"
       responses:
-        "200":
+        "201":
           description: "Success"
           schema:
             $ref: "#/definitions/Store"
@@ -222,7 +230,7 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Stores"
-        "405":
+	"405":
           description: "Invalid input"
   /stores/{id}:
     put:
@@ -250,6 +258,8 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Store"
+	"404":
+          description: "Not Found"
         "405":
           description: "Invalid input"
     delete:
@@ -267,9 +277,11 @@ paths:
         required: true
         description: "Store ID"
       responses:
-        "200":
+        "204":
           description: "Success"
-        "405":
+        "404":
+          description: "Not Found"
+	"405":
           description: "Invalid input"
           
   /transactions:
@@ -289,7 +301,7 @@ paths:
         schema:
           $ref: "#/definitions/Transaction_Data"
       responses:
-        "200":
+        "201":
           description: "Success"
           schema:
             $ref: "#/definitions/Transaction"
@@ -321,7 +333,9 @@ paths:
           description: "Success"
           schema:
             $ref: "#/definitions/Transaction"
-        "405":
+        "404":
+          description: "Not Found"
+	"405":
           description: "Invalid input"
           
   /evaluations:
@@ -341,7 +355,7 @@ paths:
         schema:
           $ref: "#/definitions/Evaluation_Data"
       responses:
-        "200":
+        "201":
           description: "Success"
           schema:
             $ref: "#/definitions/Evaluation"

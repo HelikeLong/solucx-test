@@ -25,6 +25,14 @@ class Client extends Model
      * @var array
      */
     protected $fillable = ['name', 'email', 'phone', 'document', 'deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+
+    public static $rules = [
+        "name" => "required|max:150",
+        "email" => "required|email|max:100",
+        "phone" => "required|regex:/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/i|max:15",
+        "document" => "required|regex:/^$[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/i|max:15"
+    ];
 
     /**
      * @return HasMany

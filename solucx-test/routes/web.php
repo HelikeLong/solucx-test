@@ -13,35 +13,35 @@
 |
 */
 
-Route::group(['namespace' => 'Api', 'prefix' => '/api', 'as' => 'api.'], function () {
-    Route::group(['prefix' => '/clients', 'as' => 'clients.'], function () {
-        Route::post('/', 'ClientController@store')->name('store');
-        Route::get('/', 'ClientController@index')->name('index');
-        Route::put('/{id}', 'ClientController@update')->name('update');
-        Route::delete('/{id}', 'ClientController@destroy')->name('destroy');
+$router->group(['prefix' => '/api', 'as' => 'api.'], function () use ($router) {
+    $router->group(['prefix' => '/clients', 'as' => 'clients.'], function () use ($router) {
+        $router->get('/', 'ClientController@all');
+        $router->post('/', 'ClientController@store');
+        $router->put('/{id}', 'ClientController@update');
+        $router->delete('/{id}', 'ClientController@delete');
     });
 
-    Route::group(['prefix' => '/collaborators', 'as' => 'collaborators.'], function () {
-        Route::post('/', 'CollaboratorController@store')->name('store');
-        Route::get('/', 'CollaboratorController@index')->name('index');
-        Route::put('/{id}', 'CollaboratorController@update')->name('update');
-        Route::delete('/{id}', 'CollaboratorController@destroy')->name('destroy');
+    $router->group(['prefix' => '/collaborators', 'as' => 'collaborators.'], function () use ($router) {
+        $router->get('/', 'CollaboratorController@all');
+        $router->post('/', 'CollaboratorController@store');
+        $router->put('/{id}', 'CollaboratorController@update');
+        $router->delete('/{id}', 'CollaboratorController@delete');
     });
 
-    Route::group(['prefix' => '/stores', 'as' => 'stores.'], function () {
-        Route::post('/', 'StoreController@store')->name('store');
-        Route::get('/', 'StoreController@index')->name('index');
-        Route::put('/{id}', 'StoreController@update')->name('update');
-        Route::delete('/{id}', 'StoreController@destroy')->name('destroy');
+    $router->group(['prefix' => '/stores', 'as' => 'stores.'], function () use ($router) {
+        $router->get('/', 'StoreController@all');
+        $router->post('/', 'StoreController@store');
+        $router->put('/{id}', 'StoreController@update');
+        $router->delete('/{id}', 'StoreController@delete');
     });
 
-    Route::group(['prefix' => '/transactions', 'as' => 'transactions.'], function () {
-        Route::post('/', 'TransactionController@store')->name('store');
-        Route::put('/{id}', 'TransactionController@update')->name('update');
+    $router->group(['prefix' => '/transactions', 'as' => 'transactions.'], function () use ($router) {
+        $router->post('/', 'TransactionController@store');
+        $router->put('/{id}', 'TransactionController@update');
     });
 
-    Route::group(['prefix' => '/evaluations', 'as' => 'evaluations.'], function () {
-        Route::post('/', 'EvaluationController@store')->name('store');
-        Route::get('/', 'EvaluationController@index')->name('index');
+    $router->group(['prefix' => '/evaluations', 'as' => 'evaluations.'], function () use ($router) {
+        $router->get('/', 'EvaluationController@all');
+        $router->post('/', 'EvaluationController@store');
     });
 });

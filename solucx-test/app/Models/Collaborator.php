@@ -22,6 +22,7 @@ class Collaborator extends Model
      * @var array
      */
     protected $fillable = ['name', 'deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return HasMany

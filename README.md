@@ -16,6 +16,11 @@ Run docker
   docker-compose up -d
 ```
 
+Run migrations to build DB
+```bash
+  docker exec -it php php /var/www/html/artisan migrate
+```
+
 ## Api Documentation
 
 Import the `./solucx-test.yaml` at Postman, Insomnia etc, to check project's APIs.
